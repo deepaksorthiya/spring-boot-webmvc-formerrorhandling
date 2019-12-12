@@ -28,8 +28,8 @@ public class UserControllerAdviceHandler {
 			System.out.println(fieldError.getField() + " - > " + fieldError.getDefaultMessage());
 		}
 
-		ErrorDto errorDto = new ErrorDto("invald arguments", LocalDateTime.now(),
-				HttpStatus.INTERNAL_SERVER_ERROR.value(), formFields);
+		ErrorDto errorDto = new ErrorDto("invald arguments", LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
+				formFields);
 		return new ResponseEntity<ErrorDto>(errorDto, HttpStatus.BAD_REQUEST);
 	}
 
