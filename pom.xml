@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-webapp</artifactId>
+	<artifactId>spring-boot-webmvc-formerrorhandling</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-webapp</name>
+	<name>spring-boot-webmvc-formerrorhandling</name>
 	<description>Demo project for Spring Boot Web application</description>
 
 	<properties>
