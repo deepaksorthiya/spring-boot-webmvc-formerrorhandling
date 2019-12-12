@@ -30,7 +30,7 @@ public class UserControllerAdviceHandler {
 
 		ErrorDto errorDto = new ErrorDto("invald arguments", LocalDateTime.now(),
 				HttpStatus.INTERNAL_SERVER_ERROR.value(), formFields);
-		return new ResponseEntity<ErrorDto>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<ErrorDto>(errorDto, HttpStatus.BAD_REQUEST);
 	}
 
 	@ExceptionHandler({ IllegalArgumentException.class })
