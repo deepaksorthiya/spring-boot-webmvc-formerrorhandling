@@ -1,7 +1,7 @@
 package com.example.model;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,13 +14,13 @@ public class ErrorDto {
 
 	public int status;
 
-	private List<FormFieldDto> fieldErrors;
+	private Map<String, FormFieldDto> fieldErrors;
 
 	public ErrorDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ErrorDto(String message, LocalDateTime timestamp, int status, List<FormFieldDto> fieldErrors) {
+	public ErrorDto(String message, LocalDateTime timestamp, int status, Map<String, FormFieldDto> fieldErrors) {
 		this.message = message;
 		this.timestamp = timestamp;
 		this.status = status;
@@ -51,11 +51,11 @@ public class ErrorDto {
 		this.status = status;
 	}
 
-	public List<FormFieldDto> getFieldErrors() {
+	public Map<String, FormFieldDto> getFieldErrors() {
 		return fieldErrors;
 	}
 
-	public void setFieldErrors(List<FormFieldDto> fieldErrors) {
+	public void setFieldErrors(Map<String, FormFieldDto> fieldErrors) {
 		this.fieldErrors = fieldErrors;
 	}
 

@@ -2,7 +2,9 @@ package com.example.exception;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +24,27 @@ public class UserControllerAdviceHandler {
 	public ResponseEntity<ErrorDto> handleIllegalArgumentException(MethodArgumentNotValidException exception) {
 		BindingResult bindingResult = exception.getBindingResult();
 		List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-		List<FormFieldDto> formFields = new ArrayList<>();
+		Map<String, FormFieldDto> maps = new HashMap<>();
 		for (FieldError fieldError : fieldErrors) {
-			formFields.add(new FormFieldDto(fieldError.getField(), fieldError.getDefaultMessage()));
-			System.out.println(fieldError.getField() + " - > " + fieldError.getDefaultMessage());
+			String fieldName = fieldError.getField();
+			String errorMsg = fieldError.getDefaultMessage();
+
+			if (!maps.containsKey(fieldName)) {
+				List<String> errors = new ArrayList<>();
+				errors.add(errorMsg);
+				FormFieldDto formFieldDto = new FormFieldDto(fieldName, errors);
+				maps.put(fieldName, formFieldDto);
+			} else {
+				List<String> errors = maps.get(fieldName).getErrorMsg();
+				errors.add(errorMsg);
+
+				FormFieldDto formFieldDto = new FormFieldDto(fieldName, errors);
+				maps.put(fieldName, formFieldDto);
+			}
+
 		}
 
-		ErrorDto errorDto = new ErrorDto("invald arguments", LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
-				formFields);
+		ErrorDto errorDto = new ErrorDto("invald arguments", LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), maps);
 		return new ResponseEntity<ErrorDto>(errorDto, HttpStatus.BAD_REQUEST);
 	}
 

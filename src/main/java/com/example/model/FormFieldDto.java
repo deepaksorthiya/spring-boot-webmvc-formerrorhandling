@@ -1,28 +1,30 @@
 package com.example.model;
 
+import java.util.List;
+
 public class FormFieldDto {
 
 	private String fieldName;
-	private String errorMsg;
+	private List<String> errorMsg;
+
+	public FormFieldDto(String fieldName, List<String> errorMsg) {
+		this.fieldName = fieldName;
+		this.errorMsg = errorMsg;
+	}
 
 	public String getFieldName() {
 		return fieldName;
-	}
-
-	public FormFieldDto(String fieldName, String errorMsg) {
-		this.fieldName = fieldName;
-		this.errorMsg = errorMsg;
 	}
 
 	public void setFieldName(String fieldName) {
 		this.fieldName = fieldName;
 	}
 
-	public String getErrorMsg() {
+	public List<String> getErrorMsg() {
 		return errorMsg;
 	}
 
-	public void setErrorMsg(String errorMsg) {
+	public void setErrorMsg(List<String> errorMsg) {
 		this.errorMsg = errorMsg;
 	}
 
