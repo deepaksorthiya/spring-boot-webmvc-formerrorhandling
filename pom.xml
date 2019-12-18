@@ -16,7 +16,11 @@
 	<description>Demo project for Spring Boot Web application</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		  <sonar.projectKey>deepaksorthiya_spring-boot-webmvc-formerrorhandling</sonar.projectKey>
+		  <sonar.organization>deepaksorthiya</sonar.organization>
+		  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		  <sonar.login>6ccd280d6aad18e3b09c71ececee437a714a4a41</sonar.login>
+		  <java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
