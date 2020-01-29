@@ -55,4 +55,10 @@ public class UserControllerAdviceHandler {
 		return new ResponseEntity<ErrorDto>(errorDto, HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler({ NumberFormatException.class })
+	public ResponseEntity<ErrorDto> handle(NumberFormatException numberFormatException) {
+		ErrorDto errorDto = new ErrorDto("inavalid userId", LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), null);
+		return new ResponseEntity<ErrorDto>(errorDto, HttpStatus.BAD_REQUEST);
+	}
+
 }

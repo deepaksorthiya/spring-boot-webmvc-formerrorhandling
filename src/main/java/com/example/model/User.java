@@ -8,12 +8,12 @@ public class User {
 
 	private int userId;
 
-	@Email(message = "email should be in proper form")
-	@NotBlank(message = "email should be blank")
+	@Email(message = "Email should be in proper form")
+	@NotBlank(message = "Email cannot be blank")
 	private String email;
 
-	@Pattern(regexp = "[a-zA-Z]+", message = "name should be in proper form")
-	@NotBlank(message = "name should be blank")
+	@Pattern(regexp = "[a-zA-Z]+", message = "Name should contains only alphabetic characters.")
+	@NotBlank(message = "Name cannot be blank")
 	private String name;
 
 	public User() {
